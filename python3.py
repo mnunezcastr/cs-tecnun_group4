@@ -10,3 +10,6 @@ import re # library used to extract data from string
 import tkinter as tk
 import sys
 #hola 123
+
+SERIAL_SPEED = 9600
+COM_PORT = 'COM5'
