@@ -16,3 +16,5 @@ class WeatherStation(tk.Tk):
     def __init__(self, **kwargs):
         super().__init__()
         self.geometry("500x200")
+        self.title('Weather Station')
+        self.resizable(False, False)
