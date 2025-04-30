@@ -72,6 +72,27 @@ class WeatherStation(tk.Tk):
         data_values=[values +10 if values.is_integer() else values for values in data_values ]
         return data_values
         
+    def get_weather(self) :
+        global data_file
+        print("get_weather() working...")
+        message = self.ser.readline() # read one line (until EOL) from the serial port
+        print(message)
+        temp=self.extract_temp(message)
+        hum=self.extract_hum(message)
+        pres=self.extract_pres(message)
+        data= self.extract_data(message)
+        print(data)
+        if len(data)==3:
+            temp, hum, pres= [f"{values}" for values in data]
+        print(temp)
+        print(hum)
+        print(pres)
+        if temp:
+            data_file.write(f'{temp}; {pres}; {hum}\n')
+        if temp:
+           self.lbl_temp["text"]= temp + " ºC"
+           self.lbl_hum["text"]=hum + " %"
+           self.lbl_pres["text"]=pres + " hPa"
 App = WeatherStation();
 App.run()
 
