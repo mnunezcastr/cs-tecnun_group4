@@ -75,7 +75,8 @@ class WeatherStation(tk.Tk):
     def get_weather(self) :
         global data_file
         print("get_weather() working...")
-        message = self.ser.readline() # read one line (until EOL) from the serial port
+        #message = self.ser.readline() # read one line (until EOL) from the serial port
+        message = b'<temp=4.2,humd=42,press=1042> ' #b stands for binary data
         print(message)
         temp=self.extract_temp(message)
         hum=self.extract_hum(message)
