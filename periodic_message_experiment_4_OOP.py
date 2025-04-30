@@ -63,6 +63,15 @@ class WeatherStation(tk.Tk):
         else:
             return pres
         
+    def extract_data(self, message):
+        self.temp=self.extract_temp(message)
+        self.hum=self.extract_hum(message)
+        self.pres=self.extract_pres(message)
+        data=[self.temp, self.hum, self.pres]
+        data_values= [float(num) for num in data if num]
+        data_values=[values +10 if values.is_integer() else values for values in data_values ]
+        return data_values
+        
 App = WeatherStation();
 App.run()
 
