@@ -15,3 +15,4 @@ class WeatherStation(tk.Tk):
         return super().__new__(cls)
     def __init__(self, **kwargs):
         super().__init__()
+        self.geometry("500x200")
