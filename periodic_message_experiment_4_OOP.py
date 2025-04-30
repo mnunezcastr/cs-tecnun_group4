@@ -34,6 +34,35 @@ class WeatherStation(tk.Tk):
     def run(self):
         self.mainloop()
         
+    def extract_temp(self,message):
+        
+        data_string = message.decode("utf-8")
+        temp = re.findall('<temp=([\d]+[.,\d]+),', data_string) # extract values from string
+        if temp:
+            return temp[0]
+        else:
+            return temp
+        
+
+    def extract_hum (self,message):
+        
+        data_string = message.decode("utf-8")
+        hum = re.findall('hum=([\d]+[.,\d]+),', data_string) # extract values from string
+        if hum:
+            return hum[0]
+        else:
+            return hum
+       
+
+    def extract_pres (self,message):
+        
+        data_string = message.decode("utf-8")
+        pres = re.findall('pres=([\d]+[.,\d]+)>', data_string) # extract values from string
+        if pres:
+            return pres[0]
+        else:
+            return pres
+        
 App = WeatherStation();
 App.run()
 
