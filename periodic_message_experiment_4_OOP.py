@@ -31,9 +31,6 @@ class WeatherStation(tk.Tk):
     def close_application(self):
         self.destroy()
         
-    def run(self):
-        self.mainloop()
-        
     def extract_temp(self,message):
         
         data_string = message.decode("utf-8")
@@ -88,12 +85,16 @@ class WeatherStation(tk.Tk):
         print(temp)
         print(hum)
         print(pres)
-        if temp:
-            data_file.write(f'{temp}; {pres}; {hum}\n')
+        #if temp:
+            #data_file.write(f'{temp}; {pres}; {hum}\n')
         if temp:
            self.lbl_temp["text"]= temp + " ºC"
            self.lbl_hum["text"]=hum + " %"
            self.lbl_pres["text"]=pres + " hPa"
+           
+    def run(self):
+        self.mainloop()
+        self.after(1000, self.get_weather)
 App = WeatherStation();
 App.run()
 
