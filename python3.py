@@ -13,3 +13,8 @@ import sys
 
 SERIAL_SPEED = 9600
 COM_PORT = 'COM5'
+
+ser = serial.Serial() # create a serial instance
+ser.port = COM_PORT # set the port number
+ser.baudrate = SERIAL_SPEED # set the baudrate of the port
+    
