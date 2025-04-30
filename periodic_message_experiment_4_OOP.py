@@ -23,9 +23,9 @@ class WeatherStation(tk.Tk):
         self.btn_quit.place(x=230, y=100)
         self.lbl_temp = tk.Label(master=self, text="Initial temp", font=50)
         self.lbl_temp.place(x=230, y=20)
-        self.lbl_hum = tk.Label(master=self, text="Initial temp", font=50)
+        self.lbl_hum = tk.Label(master=self, text="Initial hum", font=50)
         self.lbl_hum.place(x=100, y=20)
-        self.lbl_pres = tk.Label(master=self, text="Initial temp", font=50)
+        self.lbl_pres = tk.Label(master=self, text="Initial pres", font=50)
         self.lbl_pres.place(x=330, y=20)
         
     def close_application(self):
@@ -73,7 +73,7 @@ class WeatherStation(tk.Tk):
         global data_file
         print("get_weather() working...")
         #message = self.ser.readline() # read one line (until EOL) from the serial port
-        message = b'<temp=4.2,humd=42,press=1042> ' #b stands for binary data
+        message = b'<temp=4.2,hum=42,pres=1042> ' #b stands for binary data
         print(message)
         temp=self.extract_temp(message)
         hum=self.extract_hum(message)
@@ -93,8 +93,10 @@ class WeatherStation(tk.Tk):
            self.lbl_pres["text"]=pres + " hPa"
            
     def run(self):
-        self.mainloop()
         self.after(1000, self.get_weather)
+        self.mainloop()
+        
+    
 App = WeatherStation();
 App.run()
 
