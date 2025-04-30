@@ -23,4 +23,5 @@ class WeatherStation(tk.Tk):
     def run(self):
         self.mainloop()
         
-    
+App = WeatherStation();
+App.run()
